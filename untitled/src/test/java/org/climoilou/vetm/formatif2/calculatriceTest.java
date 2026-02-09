@@ -17,4 +17,15 @@ class calculatriceTest {
     void givenEmptyString_whenAdd_thenReturnZero() {
         assertEquals(0, calculatrice.add(""));
     }
+
+    @Test
+    void givenString2_whenAdd_thenReturn2() {
+        assertEquals(2, calculatrice.add("2"));
+    }
+
+    @Test
+    void givenString1And2_whenAdd_thenReturn3() {
+        assertEquals(3, calculatrice.add("1,2"));
+    }
+
 }
