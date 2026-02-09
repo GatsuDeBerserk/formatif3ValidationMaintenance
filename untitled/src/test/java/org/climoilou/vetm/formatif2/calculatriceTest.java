@@ -30,14 +30,18 @@ class calculatriceTest {
 
     @Test
     void givenMultipleSeperators_WhenExecuteAdd_ThenStringSplittedAtBoth() {
-        assertEquals(3, calculatrice.add("1\n2"));
         assertEquals(6, calculatrice.add("1,2\n3"));
-        assertEquals(3, calculatrice.add("1,2"));
+    }
+
+
+    @Test
+    void GivenChangeLineSeperator_whenExecuteAdd_ThenStringRightfullySplitted() {
+        assertEquals(3, calculatrice.add("1\n2"));
     }
 
     @Test
     void givenSeperatorAtTheEndOfString_WhenExecuteAdd_ThenReturnException() {
-        assertThrows(RuntimeException.class, () -> calculatrice.add("1,2,"));
+        assertThrows(SeparatorAtTheEndException.class, () -> calculatrice.add("1,2,"));
     }
 
     @Test

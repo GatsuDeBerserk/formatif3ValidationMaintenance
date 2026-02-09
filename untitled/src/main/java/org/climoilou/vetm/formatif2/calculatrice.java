@@ -57,9 +57,9 @@ public class calculatrice {
 
     private void VerifierSiStringCorrect(String nombres) {
         if (!Character.isDigit(nombres.charAt(nombres.length() - 1))) {
-            throw new RuntimeException();
+            throw new SeparatorAtTheEndException();
         }
-//        nombres.toCharArray();
+
        if(nombres.contains("-")){
            throw new NegativeNumberException();
        }
