@@ -2,18 +2,66 @@ package org.climoilou.vetm.formatif2;
 
 public class calculatrice {
 
+    public int add(String nombres) {
+        if (nombres.isEmpty()) return 0;
+        VerifierSiStringCorrect(nombres);
 
-    public calculatrice() {
+        int total;
+        if (nombres.charAt(0) == '/' && nombres.charAt(1) == '/') {
+            total = algoDelimiteurNombre(nombres);
+        } else {
+            total = algoCalcul(nombres);
+        }
 
+        return total;
     }
 
-    public int add(String nombres) {
-//        nombres.toCharArray();
-        if (nombres.length() == 1) {
-            return Integer.parseInt(nombres);
-        } else if (nombres.length() == 3) {
-            return nombres.charAt(0) + nombres.charAt(2);
+
+    private int algoCalcul(String nombres) {
+        String vigulesRemplacer = "";
+        String separator = ",";
+
+        for (int i = 0; i < nombres.length(); i++) {
+            if (nombres.charAt(i) == '\n') {
+                vigulesRemplacer += separator;
+            } else {
+                vigulesRemplacer += nombres.charAt(i);
+            }
         }
-        return 0;
+
+        return split(vigulesRemplacer, separator);
+    }
+
+    private int split(String str, String separator) {
+        int total = 0;
+        String[] nbs = str.split(separator);
+
+        for (String nb : nbs) {
+            total += Integer.parseInt(nb);
+        }
+
+        return total;
+    }
+
+    private int algoDelimiteurNombre(String nombres) {
+        String strModifier = "";
+        String separator = String.valueOf(nombres.charAt(2));
+
+        int index = nombres.indexOf('\n');
+        if (index != -1) {
+            strModifier = nombres.substring(index + 1);
+        }
+
+        return split(strModifier, separator);
+    }
+
+    private void VerifierSiStringCorrect(String nombres) {
+        if (!Character.isDigit(nombres.charAt(nombres.length() - 1))) {
+            throw new RuntimeException();
+        }
+//        nombres.toCharArray();
+       if(nombres.contains("-")){
+           throw new NegativeNumberException();
+       }
     }
 }

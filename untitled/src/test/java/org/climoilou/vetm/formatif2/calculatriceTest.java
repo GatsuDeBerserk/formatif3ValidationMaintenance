@@ -28,4 +28,26 @@ class calculatriceTest {
         assertEquals(3, calculatrice.add("1,2"));
     }
 
+    @Test
+    void givenMultipleSeperators_WhenExecuteAdd_ThenStringSplittedAtBoth() {
+        assertEquals(3, calculatrice.add("1\n2"));
+        assertEquals(6, calculatrice.add("1,2\n3"));
+        assertEquals(3, calculatrice.add("1,2"));
+    }
+
+    @Test
+    void givenSeperatorAtTheEndOfString_WhenExecuteAdd_ThenReturnException() {
+        assertThrows(RuntimeException.class, () -> calculatrice.add("1,2,"));
+    }
+
+    @Test
+    void givenDelimiteurAndNumber_WhenExecuteAdd_thenRightAnswer3() {
+        assertEquals(3, calculatrice.add("//;\n2;1"));
+    }
+
+    @Test
+    void givenNegativeNumber_WhenExecuteAdd_ThenReturnException() {
+        assertThrows(NegativeNumberException.class, () -> calculatrice.add("1,-2"));
+    }
+
 }
