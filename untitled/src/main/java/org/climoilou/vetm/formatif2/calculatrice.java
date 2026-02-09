@@ -16,7 +16,6 @@ public class calculatrice {
         return total;
     }
 
-
     private int algoCalcul(String nombres) {
         String vigulesRemplacer = "";
         String separator = ",";
@@ -60,8 +59,8 @@ public class calculatrice {
             throw new SeparatorAtTheEndException();
         }
 
-       if(nombres.contains("-")){
-           throw new NegativeNumberException();
-       }
+        if (nombres.contains("-")) {
+            throw new NegativeNumberException();
+        }
     }
 }
