@@ -50,7 +50,7 @@ class calculatriceTest {
     }
 
     @Test
-    void givenNegativeNumber_WhenExecuteAdd_ThenReturnException() {
+    void givenNegativeNumber_WhenExecuteAdd_ThenThorowException() {
         assertThrows(NegativeNumberException.class, () -> calculatrice.add("1,-2"));
     }
 

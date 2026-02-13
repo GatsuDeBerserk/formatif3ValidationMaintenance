@@ -4,7 +4,7 @@ public class calculatrice {
 
     public int add(String nombres) {
         if (nombres.isEmpty()) return 0;
-        VerifierSiStringCorrect(nombres);
+        verifierSiStringCorrect(nombres);
 
         int total;
         if (nombres.charAt(0) == '/' && nombres.charAt(1) == '/') {
@@ -54,12 +54,15 @@ public class calculatrice {
         return split(strModifier, separator);
     }
 
-    private void VerifierSiStringCorrect(String nombres) {
+    private void verifierSiStringCorrect(String nombres) {
         if (!Character.isDigit(nombres.charAt(nombres.length() - 1))) {
             throw new SeparatorAtTheEndException();
         }
-
         if (nombres.contains("-")) {
+//            char[] tab=nombres.toCharArray();
+//            for (char lettre :tab){
+//
+//            }
             throw new NegativeNumberException();
         }
     }
